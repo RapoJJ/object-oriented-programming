@@ -8,9 +8,15 @@ namespace CatProgram
         {
             Console.WriteLine("Tämä on kissaohjelma!");
 
-            Cat myCat = new Cat();
-            Cat cat = new Cat(3);
+            Cat myFirstCat = new Cat("Nala", 1);
 
+
+            myFirstCat.IncreaseWeight(5);
+            myFirstCat.PrintWeight();
+
+            Cat mySecondCat = new Cat("Olio", 3);
+            mySecondCat.PrintWeight();
+            
             Console.WriteLine("Press any key to continue!");
             Console.ReadKey();
         }
