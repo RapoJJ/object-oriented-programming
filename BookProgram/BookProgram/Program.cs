@@ -6,7 +6,12 @@ namespace BookProgram
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Book firstBook = new Book("The Winds of Winter", "George R.R. Martin", "10101", 20);
+
+            firstBook.BookInfoPrinter();
+
+            Book secondBook = new Book("Game of Thrones", "George R.R Martin", "10001", 30);
+            
         }
     }
 }
