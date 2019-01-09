@@ -9,34 +9,25 @@ namespace BookProgram
         public string title;
         public string author;
         public string idNumber;
-        public int price;
+        public double price;
 
-        public Book(string title, string author, string idNumber, int price)
+        public Book(string title, string author, string idNumber, double price)
         {
             this.title = title;
             this.author = author;
             this.idNumber = idNumber;
             this.price = price;
         }
-        public Book (string title)
+        public string BookInfoPrinter()
         {
-            this.title = title;
-        }
-
-        public void BookInfoPrinter()
-        {
-            Console.Write("Kirjan tiedot: ");
-            Console.Write($" Nimi: {this.title}");
-            Console.Write($" Kirjailija: {this.author}");
-            Console.Write($" Id-tunnus: {this.idNumber}");
-            Console.Write($" Hinta: {this.price}\n");
+            return $"Nimi: {this.title}\nKirjailija: {this.author}\nId-tunnus: {this.idNumber}\nHinta: {this.price}\n";
         }
         public string CompareBook (Book book)
         {
             if (this.price > book.price)
-                return $"{this.title} on kalliimpi kuin {book.title}.";
+                return $"{this.title} maksaa {this.price - book.price} euroa enemmän kuin {book.title}.";
             else
-                return $"{book.title} on kalliimpi kuin {this.title}.";
+                return $"{book.title} maksaa {book.price - this.price} euroa enemmän kuin {this.title}.";
         }
     }
 }
