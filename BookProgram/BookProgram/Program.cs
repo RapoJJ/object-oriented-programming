@@ -11,7 +11,8 @@ namespace BookProgram
             firstBook.BookInfoPrinter();
 
             Book secondBook = new Book("Game of Thrones", "George R.R Martin", "10001", 30);
-            
+            secondBook.BookInfoPrinter();
+            Console.WriteLine(firstBook.CompareBook(secondBook));            
         }
     }
 }

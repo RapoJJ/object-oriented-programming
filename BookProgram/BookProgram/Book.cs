@@ -25,10 +25,11 @@ namespace BookProgram
 
         public void BookInfoPrinter()
         {
-            Console.WriteLine($"Kirjan nimi: {this.title}");
-            Console.WriteLine($"Kirjan kirjailija: {this.author}");
-            Console.WriteLine($"Kirjan id-tunnus: {this.idNumber}");
-            Console.WriteLine($"Kirjan hinta: {this.price}");
+            Console.Write("Kirjan tiedot: ");
+            Console.Write($" Nimi: {this.title}");
+            Console.Write($" Kirjailija: {this.author}");
+            Console.Write($" Id-tunnus: {this.idNumber}");
+            Console.Write($" Hinta: {this.price}\n");
         }
         public string CompareBook (Book book)
         {
