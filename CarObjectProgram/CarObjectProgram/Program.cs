@@ -6,7 +6,14 @@ namespace CarObjectProgram
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Car firstCar = new Car();
+            firstCar.AskData();
+            firstCar.ShowCarInfo();
+
+            Car secondCar = new Car();
+            secondCar.AskData();
+            secondCar.ShowCarInfo();
+
         }
     }
 }
