@@ -52,7 +52,21 @@ namespace CompanyClass
         public void Profit()
         {
             double profit = 100 * (this.income - this.expense) / this.expense;
-            Console.WriteLine($"Companys profit is {profit} %.");
+            Console.Write($"Companys {this.title} profit is {profit} %. ");
+
+            if (profit > 300)
+            {
+                Console.WriteLine("Companys business is doing well!");
+            }
+            else if (profit < 100)
+            {
+                Console.WriteLine("Companys business is doing badly!");
+            }
+            else
+            {
+                Console.WriteLine("Companys business is doing satisfactorily.");
+            }
+            Console.WriteLine("--------------------------------------------------");
         }
     }
 }
