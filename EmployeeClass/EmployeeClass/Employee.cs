@@ -53,5 +53,9 @@ namespace EmployeeClass
             }
             Console.WriteLine("---------------------------------");
         }
+        public override string ToString()
+        {
+            return $"Employee: {this.name}\nId: {this.id}\nPosition: {this.position}\nSalary: {this.salary}\n------------------";
+        }
     }
 }
