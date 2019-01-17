@@ -6,9 +6,9 @@ namespace EmployeeClass
 {
     class Employee
     {
-        public string name;       
+        public string name;
         public string position;
-        
+
         public int id;
         public int salary;
         private static int counter = 0;

@@ -33,8 +33,8 @@ namespace EmployeeClass
 
             employees[0].CompareSalary(employees[1]);
             employees[0].CompareSalary(employees[2]);
-            employees[1].CompareSalary(employees[2]);
-             */
+            employees[1].CompareSalary(employees[2]);*/
+             
             List<Employee> employeeList = new List<Employee>()
             {
                 new Employee{name = "Matti", position ="Team leader", salary = 5000},
@@ -44,10 +44,9 @@ namespace EmployeeClass
 
             employeeList.ForEach(Console.WriteLine);
 
+            Console.WriteLine("\nEmployeees sorted by salary!\n");
 
-            Console.WriteLine("");
             employeeList.Sort((x, y) => x.salary - y.salary);
-
             employeeList.ForEach(Console.WriteLine);
         }
     }
