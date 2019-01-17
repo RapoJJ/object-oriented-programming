@@ -48,7 +48,7 @@ namespace CarObjectProgram
             }
             else
             {
-                Console.WriteLine("Negative accelerating isn't possible!");
+                Console.WriteLine("Negative using ACCELERATE isn't possible!");
             }
         }
         public void Brake()
