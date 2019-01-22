@@ -74,34 +74,38 @@ namespace TicketPrice
             do
             {
                 cki = UserInterface();
-                
+                Console.WriteLine("");
                 switch (cki.Key)
                 {
                     case ConsoleKey.F1:
+                        Console.WriteLine("Chose MTK Member ticket, discount is 15 %.");
                         customer.MtkMember = true;
                         isKey = true;
                         break;
                     case ConsoleKey.F2:
+                        Console.WriteLine("Chose Student ticket, discount is 45 %.");
                         customer.Student = true;
                         isKey = true;
                         break;
                     case ConsoleKey.F3:
+                        Console.WriteLine("Chose Student + MTK Member ticket, discount is 60 %.");
                         customer.Student = true;
                         customer.MtkMember = true;
                         isKey = true;
                         break;
                     case ConsoleKey.F4:
+                        Console.WriteLine("Chose Conscript ticket, discount is 50 %.");
                         customer.Conscript = true;
                         isKey = true;
                         break;
                     case ConsoleKey.F5:
+                        Console.WriteLine("Chose normal ticket, no discount is given.");
                         isKey = true;
                         break;
                     default:
                         Console.WriteLine("You didnt press correct key!");
                         break;
                 }
-                Console.WriteLine("");
             } while (!isKey);
         }       
     }
