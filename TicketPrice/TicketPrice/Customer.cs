@@ -6,18 +6,17 @@ namespace TicketPrice
 {
     class Customer
     {
-        public double ticketPrice = 16;
-        public int age;
+        public int age = -1;
         public bool isMtkMember;
         public bool isStudent;
         public bool isConscript;
 
         public Customer()
         {
-            this.age = 0;
-            this.isMtkMember = true;
-            this.isStudent = true;
-            this.isConscript = true;
+            this.age = -1;
+            this.isMtkMember = false;
+            this.isStudent = false;
+            this.isConscript = false;
         }
         public Customer(int age, bool member, bool student, bool conscript)
         {
@@ -26,43 +25,35 @@ namespace TicketPrice
             this.isStudent = student;
             this.isConscript = conscript;
         }
-
-        public void TicketCalculator()
+        public int Age
         {
-            double discount = 0;
-
-            if (this.age < 7)
+            get { return age; }
+            set
             {
-                discount = 1;
-            }
-            else if (this.age > 65)
-            {
-                discount = 0.5;
-            }
-            else if (this.age >= 7 && this.age <= 15)
-            {
-                discount = 0.5;
-            }
-            else
-            {
-                if (this.isConscript)
+                if (value < 0 || value > 120)
                 {
-                    discount = 0.45;
+                    Console.WriteLine("Ikä pitää olla väliltä 0 - 120.");
                 }
-                else if (this.isMtkMember && this.isStudent)
+                else
                 {
-                    discount = 0.60;
-                }
-                else if (this.isStudent)
-                {
-                    discount = 0.45;
-                }
-                else if (this.isMtkMember)
-                {
-                    discount = 0.15;
+                    age = value;
                 }
             }
-            this.ticketPrice = ticketPrice - ticketPrice * discount;
+        }
+        public bool MtkMember
+        {
+            get { return isMtkMember; }
+            set { isMtkMember = value; }
+        }
+        public bool Student
+        {
+            get { return isStudent; }
+            set { isStudent = value; }
+        }
+        public bool Conscript
+        {
+            get { return isConscript; }
+            set { isConscript = value; }
         }
     }
 }
