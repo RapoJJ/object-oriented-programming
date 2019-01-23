@@ -38,15 +38,14 @@ namespace BookAndWriter
                 Console.WriteLine($"Title: {this.title}\n" +
                     $"Author: {this.author}\n" +
                     $"Publisher: {this.publisher}\n" +
-                    $"Theme: {this.ThemeName}" +
+                    $"Theme: {themeName}" +
                     $"Price: {this.price}.");
             }
         }
-        public string ThemeName
+        public void ChangeTheme()
         {
-            get { return themeName; }
-            set { themeName = value; }
+            Console.Write("Input new theme: ");
+            themeName = Console.ReadLine();
         }
-
     }
 }
