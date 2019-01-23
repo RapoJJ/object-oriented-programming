@@ -18,13 +18,6 @@ namespace TicketPrice
             this.isStudent = false;
             this.isConscript = false;
         }
-        public Customer(int age, bool member, bool student, bool conscript)
-        {
-            this.age = age;
-            this.isMtkMember = member;
-            this.isStudent = student;
-            this.isConscript = conscript;
-        }
         public int Age
         {
             get { return age; }

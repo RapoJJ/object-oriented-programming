@@ -9,7 +9,6 @@ namespace TicketPrice
         private double price;
         public bool isTicketPrice;
 
-
         public Ticket()
         {
             this.price = 16.00;
