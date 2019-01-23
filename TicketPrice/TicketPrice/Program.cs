@@ -7,10 +7,8 @@ namespace TicketPrice
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-
             Customer newCustomer = new Customer();
             Ticket newTicket = new Ticket();
-
             double price;
 
             while (newCustomer.age == -1)
