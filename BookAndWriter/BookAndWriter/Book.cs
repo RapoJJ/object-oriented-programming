@@ -35,17 +35,29 @@ namespace BookAndWriter
         {
             if (name == this.title)
             {
-                Console.WriteLine($"Title: {this.title}\n" +
-                    $"Author: {this.author}\n" +
+                Console.WriteLine($"Book {name} found!");
+                Console.WriteLine($"Author: {this.author}\n" +
                     $"Publisher: {this.publisher}\n" +
                     $"Theme: {themeName}" +
                     $"Price: {this.price}.");
             }
         }
-        public void ChangeTheme()
+        static void ChangeTheme()
         {
             Console.Write("Input new theme: ");
             themeName = Console.ReadLine();
+        }
+
+        public double Price
+        {
+            get { return price; }
+            set
+            {
+                if (value > 30)
+                    price = value * 0.9;
+                else
+                    price = value;
+            }
         }
     }
 }
