@@ -13,7 +13,7 @@ namespace BookAndWriter
         public static string themeName;
 
         /// <summary>
-        /// Nimi, Kirjailija, Kustantaja, Hinta
+        /// Nimi, Kirjailija, Kustantaja, Hinta, Teema
         /// </summary>
         public Book()
         {
@@ -22,15 +22,18 @@ namespace BookAndWriter
             this.publisher = string.Empty;
             this._price = 0;
         }
-        public Book(string title, string author, string publisher, string theme)
+        public Book(string title, string author, string publisher, double price, string theme)
         {
             this.title = title;
             this.author = author;
             this.publisher = publisher;
-            this._price = 0;
+            this.Price = price;
             themeName = theme;
         }
-
+        /// <summary>
+        /// Checks if string name is the title of the book, if it is method prints books info.
+        /// </summary>
+        /// <param name="name"></param>
         public void FindBook(string name)
         {
             if (name == this.title)
@@ -39,7 +42,7 @@ namespace BookAndWriter
                 Console.WriteLine($"Author: {this.author}\n" +
                     $"Publisher: {this.publisher}\n" +
                     $"Theme: {themeName}\n" +
-                    $"Price: {this._price}.");
+                    $"Price: {this.Price:N2} €.");
             }
             else
             {
@@ -47,12 +50,17 @@ namespace BookAndWriter
             }
             Console.WriteLine("");
         }
+        /// <summary>
+        /// Method sets static theme to user inputted one.
+        /// </summary>
         public static void ChangeTheme()
         {
             Console.Write("Input new theme: ");
             themeName = Console.ReadLine();
         }
-
+        /// <summary>
+        /// Price property, gives 10% sale if books price is over 30.
+        /// </summary>
         public double Price
         {
             get { return _price; }
@@ -60,14 +68,22 @@ namespace BookAndWriter
             {
                 if (value > 30)
                 {
-                    Console.WriteLine($"Books {this.title} price set to {value} and it's over 30 so it gets 10 % sale.");
                     _price = value * 0.9;
                 }
                 else
                 {
-                    Console.WriteLine($"Books {this.title} price set to {value} and it's under 30 so it stays the same.");
                     _price = value;
                 }
+            }
+        }
+        /// <summary>
+        /// Read only property of Author
+        /// </summary>
+        public string Author
+        {
+            get
+            {
+                return author;
             }
         }
     }

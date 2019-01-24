@@ -6,9 +6,10 @@ namespace BookAndWriter
     {
         static void Main(string[] args)
         {
-            Book firstBook = new Book("A Game of Thrones", "G. R.R. Martin", "Bantam Books", "Fantasy");
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Book firstBook = new Book("A Game of Thrones", "G. R.R. Martin", "Bantam Books", 35, "Fantasy");
 
-            Book secondBook = new Book("The Thirst", "Jo Nesbø", "Harvill Secker", "Crime");
+            Book secondBook = new Book("The Thirst", "Jo Nesbø", "Harvill Secker", 25,"Crime");
         
             firstBook.FindBook("A Game of Thrones");
             firstBook.FindBook("Is it this one?");
@@ -19,10 +20,10 @@ namespace BookAndWriter
 
             Book.ChangeTheme();
 
-            firstBook.Price = 40;
-            secondBook.Price = 25;
-            Console.WriteLine($"Books {firstBook.title} new price is {firstBook.Price}.");
-            Console.WriteLine($"Books {secondBook.title} new price is {secondBook.Price}.");
+
+            Console.WriteLine($"{firstBook.title} author is {firstBook.Author}.");
+            Console.WriteLine($"{secondBook.title} author is {secondBook.Author}.");
+
         }
     }
 }
