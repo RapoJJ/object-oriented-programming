@@ -24,6 +24,14 @@ namespace BookAndWriter
             Console.WriteLine($"{firstBook.title} author is {firstBook.Author}.");
             Console.WriteLine($"{secondBook.title} author is {secondBook.Author}.");
 
+            Author author = new Author
+            {
+                Name = "G. R.R. Martin",
+                Birthday = "September 20, 1948",
+                Book = firstBook
+            };
+            author.PrintInfo();
+
         }
     }
 }

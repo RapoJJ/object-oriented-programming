@@ -30,6 +30,14 @@ namespace BookAndWriter
             this.Price = price;
             themeName = theme;
         }
+        public void BookInfoPrinter()
+        {
+            Console.WriteLine($"Book title: {this.title}" +
+                $"Author: {this.author}\n" +
+                $"Publisher: {this.publisher}\n" +
+                $"Theme: {themeName}\n" +
+                $"Price: {this.Price:N2} €.");
+        }
         /// <summary>
         /// Checks if string name is the title of the book, if it is method prints books info.
         /// </summary>
