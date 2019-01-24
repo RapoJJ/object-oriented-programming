@@ -21,8 +21,8 @@ namespace BookAndWriter
 
             firstBook.Price = 40;
             secondBook.Price = 25;
-            Console.WriteLine(firstBook.price);
-            Console.WriteLine(secondBook.price);
+            Console.WriteLine($"Books {firstBook.title} new price is {firstBook.Price}.");
+            Console.WriteLine($"Books {secondBook.title} new price is {secondBook.Price}.");
         }
     }
 }

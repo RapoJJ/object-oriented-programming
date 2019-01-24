@@ -9,7 +9,7 @@ namespace BookAndWriter
         public string title;
         public string author;
         public string publisher;
-        public double price;
+        private double _price;
         public static string themeName;
 
         /// <summary>
@@ -20,14 +20,14 @@ namespace BookAndWriter
             this.title = string.Empty;
             this.author = string.Empty;
             this.publisher = string.Empty;
-            this.price = 0;
+            this._price = 0;
         }
         public Book(string title, string author, string publisher, string theme)
         {
             this.title = title;
             this.author = author;
             this.publisher = publisher;
-            this.price = 0;
+            this._price = 0;
             themeName = theme;
         }
 
@@ -39,7 +39,7 @@ namespace BookAndWriter
                 Console.WriteLine($"Author: {this.author}\n" +
                     $"Publisher: {this.publisher}\n" +
                     $"Theme: {themeName}\n" +
-                    $"Price: {this.price}.");
+                    $"Price: {this._price}.");
             }
             else
             {
@@ -55,18 +55,18 @@ namespace BookAndWriter
 
         public double Price
         {
-            get { return price; }
+            get { return _price; }
             set
             {
                 if (value > 30)
                 {
                     Console.WriteLine($"Books {this.title} price set to {value} and it's over 30 so it gets 10 % sale.");
-                    price = value * 0.9;
+                    _price = value * 0.9;
                 }
                 else
                 {
                     Console.WriteLine($"Books {this.title} price set to {value} and it's under 30 so it stays the same.");
-                    price = value;
+                    _price = value;
                 }
             }
         }
