@@ -5,7 +5,7 @@ using System.Text;
 namespace BookAndWriter
 {
     class Book
-    {           //nimi, kirjailija, kustantaja, hinta sekä teemanNimi
+    {
         public string title;
         public string author;
         public string publisher;
@@ -22,12 +22,12 @@ namespace BookAndWriter
             this.publisher = string.Empty;
             this.price = 0;
         }
-        public Book(string title, string author, string publisher, double price, string theme)
+        public Book(string title, string author, string publisher, string theme)
         {
             this.title = title;
             this.author = author;
             this.publisher = publisher;
-            this.price = price;
+            this.price = 0;
             themeName = theme;
         }
 
@@ -38,11 +38,16 @@ namespace BookAndWriter
                 Console.WriteLine($"Book {name} found!");
                 Console.WriteLine($"Author: {this.author}\n" +
                     $"Publisher: {this.publisher}\n" +
-                    $"Theme: {themeName}" +
+                    $"Theme: {themeName}\n" +
                     $"Price: {this.price}.");
             }
+            else
+            {
+                Console.WriteLine($"Kirjan nimi ei ollut {name}.");
+            }
+            Console.WriteLine("");
         }
-        static void ChangeTheme()
+        public static void ChangeTheme()
         {
             Console.Write("Input new theme: ");
             themeName = Console.ReadLine();
@@ -54,9 +59,15 @@ namespace BookAndWriter
             set
             {
                 if (value > 30)
+                {
+                    Console.WriteLine($"Books {this.title} price set to {value} and it's over 30 so it gets 10 % sale.");
                     price = value * 0.9;
+                }
                 else
+                {
+                    Console.WriteLine($"Books {this.title} price set to {value} and it's under 30 so it stays the same.");
                     price = value;
+                }
             }
         }
     }
