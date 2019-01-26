@@ -22,8 +22,8 @@ namespace BookAndWriter
             Book.ChangeTheme();
 
 
-            Console.WriteLine($"{firstBook.title} author is {firstBook.Author}.");
-            Console.WriteLine($"{secondBook.title} author is {secondBook.Author}.");
+            Console.WriteLine($"{firstBook.title} author is {firstBook.Author}.\n");
+            Console.WriteLine($"{secondBook.title} author is {secondBook.Author}.\n");
 
             Author author = new Author
             {
@@ -31,6 +31,7 @@ namespace BookAndWriter
                 Birthday = "September 20, 1948",
                 Book = firstBook
             };
+            Console.WriteLine("\nPrint Authors info and his books info:");
             author.PrintInfo();
 
         }

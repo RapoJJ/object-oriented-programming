@@ -32,7 +32,7 @@ namespace Literature
         }
         public void BookInfoPrinter()
         {
-            Console.WriteLine($"Book title: {this.title}" +
+            Console.WriteLine($"Book title: {this.title}\n" +
                 $"Author: {this.author}\n" +
                 $"Publisher: {this.publisher}\n" +
                 $"Theme: {themeName}\n" +
