@@ -16,5 +16,19 @@ namespace TransportVehicle
             model = string.Empty;
             doorAmount = 4;
         }
+        public Car(double engine, string model, int doorAmount, string type, string brand, int year, int price):
+            base(type, brand, year, price)
+        {
+            this.engine = engine;
+            this.model = model;
+            this.doorAmount = doorAmount;
+        }
+        public override void PrintInfo()
+        {
+            base.PrintInfo();
+            Console.WriteLine($"Engine: {this.engine}\n" +
+                $"Model: {this.model}\n" +
+                $"Doors: {this.doorAmount}");
+        }
     }
 }

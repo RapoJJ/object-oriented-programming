@@ -27,9 +27,9 @@ namespace TransportVehicle
         }
         public virtual void PrintInfo()
         {
-            Console.WriteLine($"Vehicle type: {this.type}" +
-                $"Brand: {this.brand}" +
-                $"Model year: {this.yearModel}" +
+            Console.WriteLine($"Vehicle type: {this.type}\n" +
+                $"Brand: {this.brand}\n" +
+                $"Model year: {this.yearModel}\n" +
                 $"Price: {this.price}");
         }
     }
