@@ -32,5 +32,12 @@ namespace TransportVehicle
                 $"Model year: {this.yearModel}\n" +
                 $"Price: {this.price}");
         }
+        public override string ToString()
+        {
+            return $"Vehicle type: {this.type}\n" +
+                $"Brand: {this.brand}\n" +
+                $"Model year: {this.yearModel}\n" +
+                $"Price: {this.price}";
+        }
     }
 }

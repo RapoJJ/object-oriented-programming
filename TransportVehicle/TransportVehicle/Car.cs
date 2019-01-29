@@ -30,5 +30,20 @@ namespace TransportVehicle
                 $"Model: {this.model}\n" +
                 $"Doors: {this.doorAmount}");
         }
+        public override string ToString()
+        {
+            return base.ToString() + $"\nEngine: {this.engine}\n" +
+                $"Model: {this.model}\n" +
+                $"Doors: {this.doorAmount}";
+        }
+        public override bool Equals(object obj)
+        {
+            Car carObj = obj as Car;
+
+            if (carObj == null)
+                return false;
+            else
+                return base.Equals((Car)carObj);
+        }
     }
 }
