@@ -24,14 +24,14 @@ namespace TransportVehicle
         public override void PrintInfo()
         {
             base.PrintInfo();
-            Console.WriteLine($"Load Weight: {this.loadWeight}\n" +
-                $"Fuel Consumption per KG: {this.fuelConsumptionPerKG}\n" +
+            Console.WriteLine($"Load Weight: {this.loadWeight}\t" +
+                $"Fuel Consumption per KG: {this.fuelConsumptionPerKG}\t" +
                 $"Fuel Consumption: {this.FuelConsumption()}");
         }
         public override string ToString()
         {
-            return base.ToString() + $"Load Weight: {this.loadWeight}\n" +
-                $"Fuel Consumption per KG: {this.fuelConsumptionPerKG}\n" +
+            return base.ToString() + $"Load Weight: {this.loadWeight}\t" +
+                $"Fuel Consumption per KG: {this.fuelConsumptionPerKG}\t" +
                 $"Fuel Consumption: {this.FuelConsumption()}";
         }
         public int FuelConsumption()

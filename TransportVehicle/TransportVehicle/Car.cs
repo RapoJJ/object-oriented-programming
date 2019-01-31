@@ -26,14 +26,14 @@ namespace TransportVehicle
         public override void PrintInfo()
         {
             base.PrintInfo();
-            Console.WriteLine($"Engine: {this.engine}\n" +
-                $"Model: {this.model}\n" +
+            Console.WriteLine($"Engine: {this.engine}\t" +
+                $"Model: {this.model}\t" +
                 $"Doors: {this.doorAmount}");
         }
         public override string ToString()
         {
-            return base.ToString() + $"\nEngine: {this.engine}\n" +
-                $"Model: {this.model}\n" +
+            return base.ToString() + $"\nEngine: {this.engine}\t" +
+                $"Model: {this.model}\t" +
                 $"Doors: {this.doorAmount}";
         }
         public override bool Equals(object obj)

@@ -27,16 +27,16 @@ namespace TransportVehicle
         }
         public virtual void PrintInfo()
         {
-            Console.WriteLine($"Vehicle type: {this.type}\n" +
-                $"Brand: {this.brand}\n" +
-                $"Model year: {this.yearModel}\n" +
+            Console.WriteLine($"Vehicle type: {this.type}\t" +
+                $"Brand: {this.brand}\t" +
+                $"Model year: {this.yearModel}\t" +
                 $"Price: {this.price}");
         }
         public override string ToString()
         {
-            return $"Vehicle type: {this.type}\n" +
-                $"Brand: {this.brand}\n" +
-                $"Model year: {this.yearModel}\n" +
+            return $"Vehicle type: {this.type}\t" +
+                $"Brand: {this.brand}\t" +
+                $"Model year: {this.yearModel}\t" +
                 $"Price: {this.price}";
         }
     }
