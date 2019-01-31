@@ -14,10 +14,10 @@ namespace TransportVehicle
         {
             engine = 2.0;
             model = string.Empty;
-            doorAmount = 4;
+            doorAmount = 5;
         }
-        public Car(double engine, string model, int doorAmount, string type, string brand, int year, int price):
-            base(type, brand, year, price)
+        public Car(double engine, string model, int doorAmount, string type, string brand, int yearModel, int price):
+            base(type, brand, yearModel, price)
         {
             this.engine = engine;
             this.model = model;
@@ -43,7 +43,12 @@ namespace TransportVehicle
             if (carObj == null)
                 return false;
             else
-                return base.Equals((Car)carObj);
+            {
+                return this.model.Equals(carObj.model) && this.brand.Equals(carObj.brand)
+                    && this.doorAmount.Equals(carObj.doorAmount) && this.engine.Equals(carObj.engine)
+                    && this.price.Equals(carObj.price) && this.type.Equals(carObj.type)
+                    && this.yearModel.Equals(carObj.yearModel);
+            }
         }
     }
 }

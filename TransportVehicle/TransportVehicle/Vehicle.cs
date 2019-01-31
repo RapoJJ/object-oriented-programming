@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TransportVehicle
 {
-    class Vehicle
+    abstract class  Vehicle
     {
         protected string type;
         protected string brand;
