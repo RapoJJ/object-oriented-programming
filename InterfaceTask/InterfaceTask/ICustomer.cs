@@ -4,9 +4,9 @@ using System.Text;
 
 namespace InterfaceTask
 {
-    interface ProductInterface
+    interface ICustomer
     {
-        Object GetProduct(string name);
-        double CalculateTotal();
+        Object GetCustomer(string name);
+        double GetBonus();
     }
 }

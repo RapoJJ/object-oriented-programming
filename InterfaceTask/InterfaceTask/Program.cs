@@ -15,24 +15,36 @@ namespace InterfaceTask
 
             List<Product> productList = new List<Product>()
             {
-                new Product("Vasara", 9.50, 5),
-                new Product("Kirves", 17.00, 20),
-                new Product("Mittanauha", 2.50, 40),
-                new Product("Naula", 0.05, 1000),
+                new Product("Hammer", 9.50, 5),
+                new Product("Axe", 17.00, 20),
+                new Product("Nail", 0.05, 1000)
             };
 
             productList.ForEach(Console.WriteLine);
 
             foreach(Product p in productList)
             {
-                if (p.GetProduct("Vasara") != null)
-                    Console.WriteLine($"Löydettiin Vasara\n{p}");
+                if (p.GetProduct("Hammer") != null)
+                    Console.WriteLine($"Found product Hammer\n{p}");
             }
 
             foreach (Product p in productList)
             {
-                Console.WriteLine($"Tuotetta {p.name} on {p.amount} ja niiden kokonaishinta on {p.CalculateTotal():F2} €");
+                Console.WriteLine($"Products {p.Name} in stock {p.Amount}. Total price: {p.CalculateTotal():F2} €");
             }
+
+            List<Customer> customerList = new List<Customer>
+            {
+                new Customer("Matti", 4200),
+                new Customer("Teppo", 800),
+                new Customer("Keijo", 1400)
+            };
+
+            customerList.ForEach(Console.WriteLine);
+
+            foreach (Customer c in customerList)
+                if (c.GetCustomer("Teppo") != null)
+                    Console.WriteLine($"Found customer Teppo\n{c}");
         }
     }
 }

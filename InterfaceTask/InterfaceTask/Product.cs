@@ -4,31 +4,35 @@ using System.Text;
 
 namespace InterfaceTask
 {
-    class Product : ProductInterface
+    class Product : IProduct
     {
-        public string name;
-        public double price;
-        public int amount;
+        private string _name;
+        private double _price;
+        private int _amount;
+
+        public string Name { get => _name; set => _name = value; }
+        public double Price { get => _price; set => _price = value; }
+        public int Amount { get => _amount; set => _amount = value; }
 
         public Product(string name, double price, int amount)
         {
-            this.name = name;
-            this.price = price;
-            this.amount = amount;
+            this.Name = name;
+            this.Price = price;
+            this.Amount = amount;
         }
 
         public override string ToString()
         {
-            return $"Name: {this.name}\tPrice: {this.price}\tAmount: {this.amount}";
+            return $"Name: {this.Name}\tPrice: {this.Price}\tAmount: {this.Amount}";
         }
 
         public double CalculateTotal()
         {
-            return this.amount * this.price;
+            return this.Amount * this.Price;
         }
         public Object GetProduct(string name)
         {
-            if (this.name == name)
+            if (this.Name == name)
                 return this;
             else
                 return null;
