@@ -23,7 +23,7 @@ namespace InterfaceTask
 
         public override string ToString()
         {
-            return $"Name: {this.Name}\tPrice: {this.Price}\tAmount: {this.Amount}";
+            return $"Product name: {this.Name}\tPrice: {this.Price}\tAmount: {this.Amount}";
         }
 
         public double CalculateTotal()

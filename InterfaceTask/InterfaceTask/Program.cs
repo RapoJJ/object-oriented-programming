@@ -20,7 +20,7 @@ namespace InterfaceTask
                 new Product("Nail", 0.05, 1000)
             };
 
-            productList.ForEach(Console.WriteLine);
+            /*productList.ForEach(Console.WriteLine);
 
             foreach(Product p in productList)
             {
@@ -31,7 +31,7 @@ namespace InterfaceTask
             foreach (Product p in productList)
             {
                 Console.WriteLine($"Products {p.Name} in stock {p.Amount}. Total price: {p.CalculateTotal():F2} €");
-            }
+            }*/
 
             List<Customer> customerList = new List<Customer>
             {
@@ -40,11 +40,30 @@ namespace InterfaceTask
                 new Customer("Keijo", 1400)
             };
 
-            customerList.ForEach(Console.WriteLine);
+            /*customerList.ForEach(Console.WriteLine);
 
             foreach (Customer c in customerList)
                 if (c.GetCustomer("Teppo") != null)
-                    Console.WriteLine($"Found customer Teppo\n{c}");
+                    Console.WriteLine($"Found customer Teppo\n{c}");*/
+
+
+            Store store = new Store
+            {
+                Name = "Heikin kauppa",
+                Sales = 45000
+            };
+
+            foreach (Product p in productList)
+                store.AddProduct(p);
+
+            foreach (Customer c in customerList)
+                store.AddCustomer(c);
+
+            Console.WriteLine($"Store info: {store}");
+            Console.WriteLine("-----------------------");
+            store.PrintCustomers();
+            Console.WriteLine("-----------------------");
+            store.PrintProducts();
         }
     }
 }

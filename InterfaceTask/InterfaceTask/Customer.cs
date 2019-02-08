@@ -20,7 +20,7 @@ namespace InterfaceTask
 
         public override string ToString()
         {
-            return $"Customer name: {this.Name}\t Purchases: {this.Purchases:F2} € Bonus: {this.GetBonus():F2} €";
+            return $"Customer name: {this.Name}\tPurchases: {this.Purchases:F2} €\tBonus: {this.GetBonus():F2} €";
         }
 
         public Object GetCustomer(string name)
