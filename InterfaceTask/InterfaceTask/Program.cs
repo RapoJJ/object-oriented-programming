@@ -11,7 +11,8 @@ namespace InterfaceTask
             /*Product vasara = new Product("Vasara", 9.50, 5);
             Console.WriteLine($"Vasaroiden kokonaishinta: {vasara.CalculateTotal()}");
             Console.WriteLine(vasara.ToString());
-            Console.WriteLine($"Löydettiin Vasara\n{vasara.GetProduct("Vasara")}");*/
+            Console.WriteLine($"Löydettiin Vasara\n{vasara.GetProduct("Vasara")}");
+            Console.WriteLine("-----------------------");*/
 
             List<Product> productList = new List<Product>()
             {
@@ -21,17 +22,20 @@ namespace InterfaceTask
             };
 
             /*productList.ForEach(Console.WriteLine);
+            Console.WriteLine("-----------------------");
 
             foreach(Product p in productList)
             {
                 if (p.GetProduct("Hammer") != null)
                     Console.WriteLine($"Found product Hammer\n{p}");
             }
+            Console.WriteLine("-----------------------");
 
             foreach (Product p in productList)
             {
                 Console.WriteLine($"Products {p.Name} in stock {p.Amount}. Total price: {p.CalculateTotal():F2} €");
-            }*/
+            }
+            Console.WriteLine("-----------------------");*/
 
             List<Customer> customerList = new List<Customer>
             {
@@ -41,10 +45,11 @@ namespace InterfaceTask
             };
 
             /*customerList.ForEach(Console.WriteLine);
-
+            Console.WriteLine("-----------------------");
             foreach (Customer c in customerList)
                 if (c.GetCustomer("Teppo") != null)
-                    Console.WriteLine($"Found customer Teppo\n{c}");*/
+                    Console.WriteLine($"Found customer Teppo\n{c}");
+            Console.WriteLine("-----------------------");*/
 
 
             Store store = new Store
@@ -59,7 +64,7 @@ namespace InterfaceTask
             foreach (Customer c in customerList)
                 store.AddCustomer(c);
 
-            Console.WriteLine($"Store info: {store}");
+            Console.WriteLine($"STORE INFO\n{store}");
             Console.WriteLine("-----------------------");
             store.PrintCustomers();
             Console.WriteLine("-----------------------");
