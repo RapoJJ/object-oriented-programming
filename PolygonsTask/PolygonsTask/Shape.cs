@@ -6,15 +6,12 @@ namespace PolygonsTask
 {
     abstract class Shape
     {
-        private string _type;
-        private string _color;
-        abstract public double Area();
-        abstract public string GetInfo();
+        public abstract double Area();
 
-        public string Type { get => _type; set => _type = value; }
-        public string Color { get => _color; set => _color = value; }
+        public string Type { get; set; }
+        public string Color { get; set; }
 
-        public Shape(string type, string color)
+        protected Shape(string type, string color)
         {
             Type = type;
             Color = color;
@@ -23,6 +20,11 @@ namespace PolygonsTask
         public string GetColor()
         {
             return this.Color;
+        }
+
+        public override string ToString()
+        {
+            return $"Shape type: {Type}\tColor: {Color}";
         }
     }
 }
