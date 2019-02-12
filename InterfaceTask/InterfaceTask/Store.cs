@@ -33,9 +33,9 @@ namespace InterfaceTask
 
         public override string ToString()
         {
-            return $"Store name: {this.Name}\tSales: {this.Sales:F2} €\t" +
+            return $"Store name: {this.Name}\tSales: {this.Sales:F2} €\n" +
                 $"Customer count: {CList.Count}\t" +
-                $"Product count: {PList.Count}\t" +
+                $"Product count: {PList.Count}\n" +
                 $"Total price of storage: {CalculateTotal():F2} €";
         }
 
@@ -62,14 +62,14 @@ namespace InterfaceTask
         {
             foreach (Product p in PList)
             {
-                Console.WriteLine($"Product name: {p.Name}\tPrice: {p.Price:F2} €\tAmount: {p.Amount}\tTotal price: {p.Amount * p.Price:F2} €");
+                Console.WriteLine(p.ToString());
             }
         }
 
         public void PrintCustomers()
         {
             foreach (Customer c in CList)
-                Console.WriteLine($"Customer name: {c.Name}\tPurchases: {c.Purchases:F2} €\tBonus: {c.GetBonus():F2} €");
+                Console.WriteLine(c.ToString());         
         }
     }
 }
