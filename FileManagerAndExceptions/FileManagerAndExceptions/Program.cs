@@ -15,8 +15,12 @@ namespace FileManagerAndExceptions
             Console.WriteLine(file.ReadWords());
             Console.WriteLine("----------------");
 
-            var fileManager = new FileManager(@"C:/temp/testifile.txt");
+            var fileManager = new FileManager(@"C:\temp\testifile.txt");
             Console.WriteLine(fileManager.ReadWords());
+
+
+            var fileManagerJson = new FileManager(@"C:\temp\movies.json");
+            Console.WriteLine(fileManagerJson.ReadWords());
         }
     }
 }
