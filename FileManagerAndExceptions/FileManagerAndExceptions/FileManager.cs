@@ -14,38 +14,42 @@ namespace FileManagerAndExceptions
 
     class FileManager
     {
-        private string filePath;
+        private readonly string _filePath;
 
         public FileManager(string filePath)
         {
-            this.filePath = String.Empty;
+            _filePath = filePath;
         }
 
         public string ReadWords()
         {
-            string content = String.Empty;
-
-            content = ReadFile();
-
-            return content;
+            try
+            {
+                var content = ReadFile();
+                return content;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }                      
         }
 
-        private string ReadFile()
+        private string ReadFile( )
         {
-            if (!File.Exists(filePath))
+            if (!File.Exists(_filePath))
             {
                 throw new FileNotFoundException("File not available");
             }
 
-            string directoryName = Path.GetDirectoryName(filePath);
-            string fileName = Path.GetFileName(filePath);
-            string fileExtension = Path.GetExtension(filePath);
+            var directoryName = Path.GetDirectoryName(_filePath);
+            var fileName = Path.GetFileName(_filePath);
+            var fileExtension = Path.GetExtension(_filePath);
 
             Console.WriteLine("directoryName: " + directoryName);
             Console.WriteLine("fileName: " + fileName);
             Console.WriteLine("fileExtension: " + fileExtension);
 
-            string fileContent = File.ReadAllText(filePath, Encoding.UTF8);
+            var fileContent = File.ReadAllText(_filePath, Encoding.UTF8);
             return fileContent;
         }
     }
