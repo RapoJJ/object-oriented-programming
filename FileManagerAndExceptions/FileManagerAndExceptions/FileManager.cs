@@ -34,7 +34,7 @@ namespace FileManagerAndExceptions
             catch (Exception e)
             {
                 return e.Message;
-            }                  
+            }              
         }
 
         private string ReadFile( )
@@ -68,8 +68,8 @@ namespace FileManagerAndExceptions
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
-            }           
+                Console.WriteLine($"Couldn't use the file, error that happened: {e.Message}");
+            }
         }
 
         public void PrintJson()
