@@ -23,12 +23,12 @@ namespace FileManagerAndExceptions
 
             Console.WriteLine("Reading movies.json file");
             FileManager fileManagerJson = new FileManager(@"C:\temp\movies.json");
-            fileManagerJson.LoadJson();
+            fileManagerJson.ReadJson();
             Console.WriteLine("---------------");
 
             Console.WriteLine("Trying to read file which doesn't exist");
             FileManager fileManagerJsonTest = new FileManager(String.Empty);
-            fileManagerJsonTest.LoadJson();
+            fileManagerJsonTest.ReadJson();
         }
     }
 }

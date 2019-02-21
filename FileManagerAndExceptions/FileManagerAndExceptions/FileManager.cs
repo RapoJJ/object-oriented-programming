@@ -56,7 +56,7 @@ namespace FileManagerAndExceptions
             return fileContent;
         }
 
-        public void LoadJson()
+        public void ReadJson()
         {
             try
             {
@@ -72,7 +72,7 @@ namespace FileManagerAndExceptions
             }
         }
 
-        public void PrintJson()
+        private void PrintJson()
         {
             foreach (Movie m in _moviesList)
             {
