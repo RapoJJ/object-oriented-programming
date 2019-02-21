@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FileManagerAndExceptions
 {
-    class Movies
+    class Movie
     {
         public string Name { get; set; }
         public int Year { get; set; }
