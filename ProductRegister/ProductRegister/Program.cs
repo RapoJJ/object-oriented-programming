@@ -13,6 +13,9 @@ namespace ProductRegister
             FileManager file = new FileManager(filePath);
 
             Console.WriteLine(file.ReadWords());
+
+
+            Console.WriteLine(file.FindProduct("110001"));
         }
 
         static ConsoleKeyInfo UserInterface()

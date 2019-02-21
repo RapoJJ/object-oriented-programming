@@ -52,5 +52,19 @@ namespace ProductRegister
             }
             return content;
         }
+
+
+        public string FindProduct(string id)
+        {
+            string content = "";
+            foreach (Product p in _productList)
+            {
+                if (id == p.Id)
+                {
+                    content = p.ToString();
+                }
+            }
+            return content;
+        }
     }
 }

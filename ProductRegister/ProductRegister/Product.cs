@@ -12,5 +12,10 @@ namespace ProductRegister
         public double Price { get; set; }
         public int Amount { get; set; }
         public string Comment { get; set; }
+
+        public override string ToString()
+        {
+            return $"Name: {Name} Id: {Id} Group Name: {GroupName} Price: {Price} Amount: {Amount} Comment: {Comment}";
+        }
     }
 }
