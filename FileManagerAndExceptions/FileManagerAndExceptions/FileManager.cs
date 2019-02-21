@@ -28,7 +28,7 @@ namespace FileManagerAndExceptions
         {
             try
             {
-                var content = ReadFile();
+                string content = ReadFile();
                 return content;
             }
             catch (Exception e)
@@ -44,15 +44,15 @@ namespace FileManagerAndExceptions
                 throw new FileNotFoundException("File not available");
             }
 
-            var directoryName = Path.GetDirectoryName(_filePath);
-            var fileName = Path.GetFileName(_filePath);
-            var fileExtension = Path.GetExtension(_filePath);
+            string directoryName = Path.GetDirectoryName(_filePath);
+            string fileName = Path.GetFileName(_filePath);
+            string fileExtension = Path.GetExtension(_filePath);
 
             Console.WriteLine("directoryName: " + directoryName);
             Console.WriteLine("fileName: " + fileName);
             Console.WriteLine("fileExtension: " + fileExtension);
 
-            var fileContent = File.ReadAllText(_filePath, Encoding.UTF8);
+            string fileContent = File.ReadAllText(_filePath, Encoding.UTF8);
             return fileContent;
         }
 
@@ -61,8 +61,8 @@ namespace FileManagerAndExceptions
             try
             {
                 //_moviesList = JsonConvert.DeserializeObject<List<Movie>>(File.ReadAllText(this._filePath));
-                var r = new StreamReader(_filePath);
-                var json = r.ReadToEnd();
+                StreamReader r = new StreamReader(_filePath);
+                string json = r.ReadToEnd();
                 _moviesList = JsonConvert.DeserializeObject<List<Movie>>(json);               
                 PrintJson();
             }
@@ -74,7 +74,7 @@ namespace FileManagerAndExceptions
 
         public void PrintJson()
         {
-            foreach (var m in _moviesList)
+            foreach (Movie m in _moviesList)
             {
                 Console.WriteLine($"Movie name: {m.Name}\tYear: {m.Year}");
             }
