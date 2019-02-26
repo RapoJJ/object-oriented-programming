@@ -16,6 +16,14 @@ namespace ProductRegister
 
 
             Console.WriteLine(file.FindProduct("110001"));
+
+
+            file.AddComment("Tilattu 300", "110002");
+
+
+            Console.WriteLine("PRINT UPDATED LIST");
+
+            Console.WriteLine(file.FindProduct("110002"));
         }
 
         static ConsoleKeyInfo UserInterface()

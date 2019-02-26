@@ -66,5 +66,17 @@ namespace ProductRegister
             }
             return content;
         }
+
+
+        public void AddComment(string comment, string id)
+        {
+            foreach (Product p in _productList)
+            {
+                if (id == p.Id)
+                {
+                    p.Comment = comment;
+                }
+            }
+        }
     }
 }
