@@ -15,7 +15,7 @@ namespace ProductRegister
 
         public override string ToString()
         {
-            return $"Name: {Name} Id: {Id} Group Name: {GroupName} Price: {Price:F2} €";
+            return $"----------\nName: {Name}\nId: {Id}\nGroup Name: {GroupName}\nPrice: {Price:F2} €";
         }
     }
 }
