@@ -25,7 +25,7 @@ namespace ProductRegister
                         Console.WriteLine(file.FindProduct(UserInputInt()));
                         break;
                     case ConsoleKey.A:
-                        file.AddComment(UserInputString(), UserInputInt());
+                        file.AddComment(UserInputInt(), UserInputString());
                         break;
                     case ConsoleKey.D:
                         file.DeleteComment(UserInputInt());

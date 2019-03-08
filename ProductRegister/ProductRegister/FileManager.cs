@@ -75,12 +75,14 @@ namespace ProductRegister
         }
 
 
-        public void AddComment(string comment, int id)
+        public void AddComment(int id, string comment)
         {
+            bool productFound = false;
             foreach (Product p in _productList)
             {
                 if (id == p.Id)
                 {
+                    productFound = true;
                     if (p.Comment == comment)
                     {
                         Console.WriteLine($"Comment ({comment}) is the same as old comment!");
@@ -93,14 +95,20 @@ namespace ProductRegister
                     }                  
                 }
             }
+            if (!productFound)
+            {
+                Console.WriteLine("Product with inputted ID couldn't be found!");
+            }
         }
 
         public void DeleteComment(int id)
         {
+            bool productFound = false;
             foreach (Product p in _productList)
             {
                 if (id == p.Id)
                 {
+                    productFound = true;
                     Console.WriteLine($"Found product {p.Name} and it's comment is {p.Comment}");
                     Console.Write("Are you sure you want to delete the comment? [Y/N]");
                     ConsoleKeyInfo cki = Console.ReadKey();
@@ -120,6 +128,10 @@ namespace ProductRegister
                     }
 
                 }
+            }
+            if (!productFound)
+            {
+                Console.WriteLine("Product with inputted ID couldn't be found!");
             }
         }
 
