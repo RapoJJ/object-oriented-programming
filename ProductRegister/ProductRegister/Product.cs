@@ -7,7 +7,7 @@ namespace ProductRegister
     class Product
     {
         public string Name { get; set; }
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string GroupName { get; set; }
         public double Price { get; set; }
         public int Amount { get; set; }
@@ -15,7 +15,7 @@ namespace ProductRegister
 
         public override string ToString()
         {
-            return $"Name: {Name} Id: {Id} Group Name: {GroupName} Price: {Price} Amount: {Amount} Comment: {Comment}";
+            return $"Name: {Name} Id: {Id} Group Name: {GroupName} Price: {Price:F2} €";
         }
     }
 }

@@ -39,7 +39,7 @@ namespace ProductRegister
             StreamReader r = new StreamReader(_filePath);
             string json = r.ReadToEnd();
             _productList = JsonConvert.DeserializeObject<List<Product>>(json);
-
+            r.Close();
             return PrintJson();           
         }
 
@@ -48,35 +48,61 @@ namespace ProductRegister
             string content = "";
             foreach (Product p in _productList)
             {
-                content += $"Product name: {p.Name}\nId Number: {p.Id}\nGroup name: {p.GroupName}\n--------------\n";
+                content += p.ToString() + "\n";
             }
             return content;
         }
 
 
-        public string FindProduct(string id)
+        public string FindProduct(int id)
         {
-            string content = "";
-            foreach (Product p in _productList)
+            string content = string.Empty;
+            try
             {
-                if (id == p.Id)
+                foreach (Product p in _productList)
                 {
-                    content = p.ToString();
+                    if (id == p.Id)
+                    {
+                        return p.ToString() + $" Amount: {p.Amount} Comment: {p.Comment}";
+                    }
                 }
             }
-            return content;
+            catch (Exception e)
+            {
+                return $"{e.Message} List of products hasn't been read yet, use choice A first!";
+            }
+            return "Cannot find product with this id number!";
         }
 
 
-        public void AddComment(string comment, string id)
+        public void AddComment(string comment, int id)
         {
             foreach (Product p in _productList)
             {
                 if (id == p.Id)
                 {
-                    p.Comment = comment;
+                    if (p.Comment == comment)
+                    {
+                        Console.WriteLine($"Comment ({comment}) is the same as old comment!");
+                    }
+                    else
+                    {
+                        p.Comment += " " + comment;
+                        Console.WriteLine($"Added comment to product {p.Name} and the added comment was {comment}.");
+                    }                  
                 }
             }
+        }
+
+        public void UpdateFile()
+        {
+            string json = JsonConvert.SerializeObject(_productList);
+
+            StreamWriter w = new StreamWriter(_filePath);
+
+            w.Write(json);
+
+            w.Close();
         }
     }
 }
