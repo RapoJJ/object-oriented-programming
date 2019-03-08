@@ -9,6 +9,7 @@ namespace ProductRegister
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             string filePath = @"C:\temp\items.json";
             FileManager file = new FileManager(filePath);
+            file.ReadWords();
             ConsoleKeyInfo cki;
 
             do
@@ -23,10 +24,11 @@ namespace ProductRegister
                     case ConsoleKey.F:
                         Console.WriteLine(file.FindProduct(UserInputInt()));
                         break;
-                    case ConsoleKey.E:
+                    case ConsoleKey.A:
                         file.AddComment(UserInputString(), UserInputInt());
                         break;
                     case ConsoleKey.D:
+                        file.DeleteComment(UserInputInt());
                         break;
                     case ConsoleKey.Escape:
                         Console.WriteLine("Shutting down the program.");
@@ -52,7 +54,7 @@ namespace ProductRegister
         {
             Console.WriteLine("[P] Print all products");
             Console.WriteLine("[F] Find product based on ID number");
-            Console.WriteLine("[E] Add comment to product");
+            Console.WriteLine("[A] Add comment to product");
             Console.WriteLine("[D] Delete products comment");
             Console.WriteLine("[Esc] Exit");
             Console.Write("Input choice: ");

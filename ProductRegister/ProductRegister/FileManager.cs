@@ -69,7 +69,7 @@ namespace ProductRegister
             }
             catch (Exception e)
             {
-                return $"{e.Message} List of products hasn't been read yet, use choice A first!";
+                return $"{e.Message}";
             }
             return "Cannot find product with this id number!";
         }
@@ -88,8 +88,37 @@ namespace ProductRegister
                     else
                     {
                         p.Comment += " " + comment;
-                        Console.WriteLine($"Added comment to product {p.Name} and the added comment was {comment}.");
+                        Console.WriteLine($"Added comment to product {p.Name} and the added comment was {comment}. " +
+                                          $"\nProducts whole comment is {p.Comment}.");
                     }                  
+                }
+            }
+        }
+
+        public void DeleteComment(int id)
+        {
+            foreach (Product p in _productList)
+            {
+                if (id == p.Id)
+                {
+                    Console.WriteLine($"Found product {p.Name} and it's comment is {p.Comment}");
+                    Console.Write("Are you sure you want to delete the comment? [Y/N]");
+                    ConsoleKeyInfo cki = Console.ReadKey();
+
+                    if (cki.Key == ConsoleKey.Y)
+                    {
+                        p.Comment = "";
+                        Console.WriteLine("\nComment deleted!");
+                    }
+                    else if (cki.Key == ConsoleKey.N)
+                    {
+                        Console.WriteLine("\nComment wasn't deleted.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nWrong input! Comment wasn't deleted.");
+                    }
+
                 }
             }
         }
