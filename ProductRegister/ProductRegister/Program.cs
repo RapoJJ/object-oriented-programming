@@ -21,7 +21,7 @@ namespace ProductRegister
                         Console.WriteLine(file.ReadWords());
                         break;
                     case ConsoleKey.F:
-                        Console.WriteLine(file.ReadWords());
+                        Console.WriteLine(file.PrintIdAndName());
                         Console.WriteLine(file.FindProduct(UserInputInt()));
                         break;
                     case ConsoleKey.R:
@@ -54,7 +54,7 @@ namespace ProductRegister
         private static ConsoleKeyInfo UserInterface()
         {
             Console.WriteLine("[P] Print all products.");
-            Console.WriteLine("[F] Find product based on ID number.");
+            Console.WriteLine("[F] Choose product by Id and print out all of its info.");
             Console.WriteLine("[R] Find products that have ran out of stock.");
             Console.WriteLine("[A] Add comment to product.");
             Console.WriteLine("[D] Delete products comment.");

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Newtonsoft.Json;
 
 namespace ProductRegister
@@ -49,6 +48,17 @@ namespace ProductRegister
             foreach (Product p in _productList)
             {
                 content += p.ToString() + "\n";
+            }
+
+            return content;
+        }
+
+        public string PrintIdAndName()
+        {
+            string content = String.Empty;
+            foreach (Product p in _productList)
+            {
+                content += $"Name: {p.Name}\nId: {p.Id}\n-----\n";
             }
 
             return content;
@@ -110,7 +120,7 @@ namespace ProductRegister
                     }
                     else
                     {
-                        p.Comment += ", " + comment;
+                        p.Comment += " " + comment;
                         Console.WriteLine($"Added comment {comment} to product {p.Name}." +
                                           $"\nProducts whole comment is {p.Comment}.");
                     }

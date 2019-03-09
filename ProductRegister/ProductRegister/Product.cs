@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProductRegister
+﻿namespace ProductRegister
 {
     class Product
     {
