@@ -58,13 +58,13 @@ namespace ProductRegister
             string content = String.Empty;
             foreach (Product p in _productList)
             {
-                content += $"Name: {p.Name}\nId: {p.Id}\n-----\n";
+                content += $"Id: {p.Id}\tName: {p.Name}\n";
             }
 
             return content;
         }
 
-        public string FindProduct(int id)
+        public string FindProductById(int id)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace ProductRegister
                 {
                     if (id == p.Id)
                     {
-                        return p.ToString() + $"\nAmount: {p.Amount}\nComment: {p.Comment}";
+                        return p.ToString() + $"\nPrice: {p.Price} €\nAmount: {p.Amount}\nComment: {p.Comment}";
                     }
                 }
             }
@@ -84,22 +84,56 @@ namespace ProductRegister
             return "Cannot find product with this id number!";
         }
 
-        public void FindProductsZeroStock()
+        public string FindProductsZeroStock()
         {
             bool productFound = false;
+            string content = string.Empty;
+            Console.WriteLine("Printing products that are out of stock.");
             foreach (Product p in _productList)
             {
                 if (p.Amount == 0)
                 {
                     productFound = true;
-                    Console.WriteLine($"Product: {p.Name} Id: {p.Id} has ran out of stock. Comment '{p.Comment}'");
+                    content += p.ToString() + "\n";
                 }
             }
 
             if (!productFound)
             {
-                Console.WriteLine("Nothing has ran out of stock!");
+                content = "Nothing has ran out of stock!";
             }
+
+            return content;
+        }
+
+        public string FindProductsByCategory(int choice)
+        {
+            string category = string.Empty;
+            string content = string.Empty;
+            switch (choice)
+            {
+                case 1:
+                    category = "Lajittelu ja säilytys";
+                    break;
+                case 2:
+                    category = "Paperit ja lehtiöt";
+                    break;
+                case 3:
+                    category = "Kynät";
+                    break;
+                case 4:
+                    category = "Kortit ja kirjekuoret";
+                    break;
+            }
+            foreach (Product p in _productList)
+            {
+                if (category == p.GroupName)
+                {
+                    content += p.ToString() + "\n";
+                }
+            }
+
+            return content;
         }
 
         public void AddComment(int id)
@@ -111,7 +145,7 @@ namespace ProductRegister
                 {
                     productFound = true;
 
-                    Console.WriteLine($"Found product {p.Name} with comment: {p.Comment}");
+                    Console.WriteLine($"Found product {p.Name} with comment: '{p.Comment}'");
                     Console.Write("Write comment to add: ");
                     string comment = Console.ReadLine();
                     if (p.Comment.Contains(comment))
@@ -121,8 +155,8 @@ namespace ProductRegister
                     else
                     {
                         p.Comment += " " + comment;
-                        Console.WriteLine($"Added comment {comment} to product {p.Name}." +
-                                          $"\nProducts whole comment is {p.Comment}.");
+                        Console.WriteLine($"Added comment '{comment}' to product '{p.Name}'." +
+                                          $"\nProducts whole comment: '{p.Comment}'.");
                     }
                 }
             }
@@ -141,21 +175,21 @@ namespace ProductRegister
                 if (id == p.Id)
                 {
                     productFound = true;
-                    Console.WriteLine($"Found product {p.Name} with comment: {p.Comment}");
-                    Console.Write("Are you sure you want to delete the comment? [Y/N]");
+                    Console.WriteLine($"Product {p.Name} with comment: '{p.Comment}'");
+                    Console.Write("Do you want to delete this comment? [Y/N]");
                     ConsoleKeyInfo cki = Console.ReadKey();
-                    if (cki.Key == ConsoleKey.Y)
+                    switch (cki.Key)
                     {
-                        p.Comment = "";
-                        Console.WriteLine("\nComment deleted!");
-                    }
-                    else if (cki.Key == ConsoleKey.N)
-                    {
-                        Console.WriteLine("\nComment wasn't deleted.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("\nWrong input! Comment wasn't deleted.");
+                        case ConsoleKey.Y:
+                            p.Comment = "";
+                            Console.WriteLine("\nComment deleted!");
+                            break;
+                        case ConsoleKey.N:
+                            Console.WriteLine("\nComment wasn't deleted.");
+                            break;
+                        default:
+                            Console.WriteLine("\nWrong input! Comment wasn't deleted.");
+                            break;
                     }
                 }
             }
@@ -174,7 +208,7 @@ namespace ProductRegister
                 if (id == p.Id)
                 {
                     productFound = true;
-                    Console.WriteLine($"Found product: {p.Name}\nStock amount: {p.Amount}\nComment: {p.Comment}");
+                    Console.WriteLine($"Found product: {p.Name}\nStock amount: {p.Amount}");
                     while (true)
                     {
                         Console.Write("Input new amount: ");
@@ -182,12 +216,11 @@ namespace ProductRegister
                         {
                             p.Amount = amount;
                             Console.WriteLine($"Product {p.Name} new stock amount is {p.Amount}.");
+                            DeleteComment(p.Id);
                             break;
                         }
-                        else
-                        {
-                            Console.WriteLine("Input wasn't number!");
-                        }
+
+                        Console.WriteLine("Input wasn't number!");
                     }                   
                 }
             }

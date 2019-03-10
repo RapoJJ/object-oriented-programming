@@ -11,7 +11,7 @@
 
         public override string ToString()
         {
-            return $"----------\nName: {Name}\nId: {Id}\nGroup Name: {GroupName}\nPrice: {Price:F2} €";
+            return $"----------\nName: {Name}\nId: {Id}\nGroup Name: {GroupName}";
         }
     }
 }
