@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Net;
 
 namespace ProductRegister
 {
@@ -8,54 +10,62 @@ namespace ProductRegister
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             string filePath = @"C:\temp\items.json";
-            FileManager file = new FileManager(filePath);
-            file.ReadWords();
+            FileManager file = new FileManager(filePath);            
             ConsoleKeyInfo cki;
-            do
+            
+            if (File.Exists(filePath))               
             {
-                Console.WriteLine("Use normal numbers from keyboard to select options!");
-                cki = UserInterface();
-                Console.WriteLine();
-                switch (cki.Key)
+                file.ReadWords();
+                do
                 {
-                    case ConsoleKey.D1:
-                        Console.WriteLine(file.ReadWords());
-                        break;                   
-                    case ConsoleKey.D2:
-                        Console.WriteLine(file.FindProductsByCategory(InterfaceOption2()));
-                        break;
-                    case ConsoleKey.D3:
-                        Console.WriteLine(file.FindProductsZeroStock());
-                        break;
-                    case ConsoleKey.D4:
-                        Console.WriteLine(file.PrintIdAndName());
-                        Console.WriteLine(file.FindProductById(UserInputInt()));
-                        break;
-                    case ConsoleKey.D5:
-                        Console.WriteLine(file.PrintIdAndName());
-                        file.AddComment(UserInputInt());
-                        break;
-                    case ConsoleKey.D6:
-                        Console.WriteLine(file.PrintIdAndName());
-                        file.DeleteComment(UserInputInt());
-                        break;
-                    case ConsoleKey.D7:
-                        Console.WriteLine(file.PrintIdAndName());
-                        file.UpdateAmount(UserInputInt());
-                        break;
-                    case ConsoleKey.Escape:
-                        Console.WriteLine("Shutting down the program.");
-                        break;
-                    default:
-                        Console.WriteLine("Wrong choice!");
-                        break;
-                }
+                    Console.WriteLine("Use normal numbers from keyboard to select options!");
+                    cki = UserInterface();
+                    Console.WriteLine();
+                    switch (cki.Key)
+                    {
+                        case ConsoleKey.D1:
+                            Console.WriteLine(file.ReadWords());
+                            break;
+                        case ConsoleKey.D2:
+                            Console.WriteLine(file.FindProductsByCategory(InterfaceOption2()));
+                            break;
+                        case ConsoleKey.D3:
+                            Console.WriteLine(file.FindProductsZeroStock());
+                            break;
+                        case ConsoleKey.D4:
+                            Console.WriteLine(file.PrintIdAndName());
+                            Console.WriteLine(file.FindProductById(UserInputInt()));
+                            break;
+                        case ConsoleKey.D5:
+                            Console.WriteLine(file.PrintIdAndName());
+                            file.AddComment(UserInputInt());
+                            break;
+                        case ConsoleKey.D6:
+                            Console.WriteLine(file.PrintIdAndName());
+                            file.DeleteComment(UserInputInt());
+                            break;
+                        case ConsoleKey.D7:
+                            Console.WriteLine(file.PrintIdAndName());
+                            file.UpdateAmount(UserInputInt());
+                            break;
+                        case ConsoleKey.Escape:
+                            Console.WriteLine("Shutting down the program.");
+                            break;
+                        default:
+                            Console.WriteLine("Wrong choice!");
+                            break;
+                    }
 
-                file.UpdateFile();
-                Console.WriteLine("Press any key to continue!");
-                Console.ReadKey();
-                Console.Clear();
-            } while (cki.Key != ConsoleKey.Escape);
+                    file.UpdateFile();
+                    Console.WriteLine("Press any key to continue!");
+                    Console.ReadKey();
+                    Console.Clear();
+                } while (cki.Key != ConsoleKey.Escape);
+            }
+            else
+            {
+                Console.WriteLine("File doesn't exist! Check the file path!");
+            }
         }
 
         private static ConsoleKeyInfo UserInterface()
@@ -63,7 +73,7 @@ namespace ProductRegister
             Console.WriteLine("[1] Print all products.");
             Console.WriteLine("[2] Print all products from one category.");
             Console.WriteLine("[3] Print all products that are out of stock.");
-            Console.WriteLine("[4] Choose product by Id and print out all of its info.");           
+            Console.WriteLine("[4] Choose product by Id and print out all of its info.");
             Console.WriteLine("[5] Add comment to product.");
             Console.WriteLine("[6] Delete products comment.");
             Console.WriteLine("[7] Update products amount in stock and delete comment.");
@@ -103,7 +113,6 @@ namespace ProductRegister
 
                 Console.WriteLine("Input wasn't number from correct range (1 - 4). Try again!");
             }
-
         }
     }
 }

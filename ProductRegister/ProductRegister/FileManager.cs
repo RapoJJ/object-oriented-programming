@@ -30,11 +30,6 @@ namespace ProductRegister
 
         private string ReadFile()
         {
-            if (!File.Exists(_filePath))
-            {
-                throw new FileNotFoundException("File not available");
-            }
-
             StreamReader r = new StreamReader(_filePath);
             string json = r.ReadToEnd();
             _productList = JsonConvert.DeserializeObject<List<Product>>(json);
@@ -56,12 +51,19 @@ namespace ProductRegister
         public string PrintIdAndName()
         {
             string content = String.Empty;
-            foreach (Product p in _productList)
+            try
             {
-                content += $"Id: {p.Id}\tName: {p.Name}\n";
-            }
+                foreach (Product p in _productList)
+                {
+                    content += $"Id: {p.Id}\tName: {p.Name}\n";
+                }
 
-            return content;
+                return content;
+            }
+            catch (Exception e)
+            {
+                return $"{e.Message} Check the data of file!";
+            }
         }
 
         public string FindProductById(int id)
@@ -78,7 +80,7 @@ namespace ProductRegister
             }
             catch (Exception e)
             {
-                return $"{e.Message}";
+                return $"{e.Message} Check the data of file!";
             }
 
             return "Cannot find product with this id number!";
@@ -89,21 +91,28 @@ namespace ProductRegister
             bool productFound = false;
             string content = string.Empty;
             Console.WriteLine("Printing products that are out of stock.");
-            foreach (Product p in _productList)
+            try
             {
-                if (p.Amount == 0)
+                foreach (Product p in _productList)
                 {
-                    productFound = true;
-                    content += p.ToString() + "\n";
+                    if (p.Amount == 0)
+                    {
+                        productFound = true;
+                        content += p.ToString() + "\n";
+                    }
                 }
-            }
 
-            if (!productFound)
+                if (!productFound)
+                {
+                    content = "Nothing has ran out of stock!";
+                }
+
+                return content;
+            }
+            catch (Exception e)
             {
-                content = "Nothing has ran out of stock!";
+                return $"{e.Message} Check the data of file!";
             }
-
-            return content;
         }
 
         public string FindProductsByCategory(int choice)
@@ -125,109 +134,139 @@ namespace ProductRegister
                     category = "Kortit ja kirjekuoret";
                     break;
             }
-            foreach (Product p in _productList)
+
+            try
             {
-                if (category == p.GroupName)
+                foreach (Product p in _productList)
                 {
-                    content += p.ToString() + "\n";
+                    if (category == p.GroupName)
+                    {
+                        content += p.ToString() + "\n";
+                    }
                 }
+
+                return content;
+            }
+            catch (Exception e)
+            {
+                return $"{e.Message} Check the data of file!";
             }
 
-            return content;
+            ;
         }
 
         public void AddComment(int id)
         {
             bool productFound = false;
-            foreach (Product p in _productList)
+            try
             {
-                if (id == p.Id)
+                foreach (Product p in _productList)
                 {
-                    productFound = true;
-
-                    Console.WriteLine($"Found product {p.Name} with comment: '{p.Comment}'");
-                    Console.Write("Write comment to add: ");
-                    string comment = Console.ReadLine();
-                    if (p.Comment.Contains(comment))
+                    if (id == p.Id)
                     {
-                        Console.WriteLine($"Comment '{comment}' is already in products comment!");
-                    }
-                    else
-                    {
-                        p.Comment += " " + comment;
-                        Console.WriteLine($"Added comment '{comment}' to product '{p.Name}'." +
-                                          $"\nProducts whole comment: '{p.Comment}'.");
+                        productFound = true;
+                        Console.WriteLine($"Found product {p.Name} with comment: '{p.Comment}'");
+                        Console.Write("Write comment to add: ");
+                        string comment = Console.ReadLine();
+                        if (p.Comment.Contains(comment))
+                        {
+                            Console.WriteLine($"Comment '{comment}' is already in products comment!");
+                        }
+                        else
+                        {
+                            p.Comment += " " + comment;
+                            Console.WriteLine($"Added comment '{comment}' to product '{p.Name}'." +
+                                              $"\nProducts whole comment: '{p.Comment}'.");
+                        }
                     }
                 }
-            }
 
-            if (!productFound)
+                if (!productFound)
+                {
+                    Console.WriteLine("Product with inputted ID couldn't be found!");
+                }
+            }
+            catch (Exception e)
             {
-                Console.WriteLine("Product with inputted ID couldn't be found!");
+                Console.WriteLine($"{e.Message} Check the data of file!");
             }
         }
 
         public void DeleteComment(int id)
         {
             bool productFound = false;
-            foreach (Product p in _productList)
+            try
             {
-                if (id == p.Id)
+                foreach (Product p in _productList)
                 {
-                    productFound = true;
-                    Console.WriteLine($"Product {p.Name} with comment: '{p.Comment}'");
-                    Console.Write("Do you want to delete this comment? [Y/N]");
-                    ConsoleKeyInfo cki = Console.ReadKey();
-                    switch (cki.Key)
+                    if (id == p.Id)
                     {
-                        case ConsoleKey.Y:
-                            p.Comment = "";
-                            Console.WriteLine("\nComment deleted!");
-                            break;
-                        case ConsoleKey.N:
-                            Console.WriteLine("\nComment wasn't deleted.");
-                            break;
-                        default:
-                            Console.WriteLine("\nWrong input! Comment wasn't deleted.");
-                            break;
+                        productFound = true;
+                        Console.WriteLine($"Product {p.Name} with comment: '{p.Comment}'");
+                        Console.Write("Do you want to delete this comment? [Y/N]");
+                        ConsoleKeyInfo cki = Console.ReadKey();
+                        switch (cki.Key)
+                        {
+                            case ConsoleKey.Y:
+                                p.Comment = "";
+                                Console.WriteLine("\nComment deleted!");
+                                break;
+                            case ConsoleKey.N:
+                                Console.WriteLine("\nComment wasn't deleted.");
+                                break;
+                            default:
+                                Console.WriteLine("\nWrong input! Comment wasn't deleted.");
+                                break;
+                        }
                     }
                 }
-            }
 
-            if (!productFound)
+                if (!productFound)
+                {
+                    Console.WriteLine("Product with inputted ID couldn't be found!");
+                }
+            }
+            catch (Exception e)
             {
-                Console.WriteLine("Product with inputted ID couldn't be found!");
+                Console.WriteLine($"{e.Message} Check the data of file!");
             }
         }
 
         public void UpdateAmount(int id)
         {
             bool productFound = false;
-            foreach (Product p in _productList)
+            try
             {
-                if (id == p.Id)
+                foreach (Product p in _productList)
                 {
-                    productFound = true;
-                    Console.WriteLine($"Found product: {p.Name}\nStock amount: {p.Amount}");
-                    while (true)
+                    if (id == p.Id)
                     {
-                        Console.Write("Input new amount: ");
-                        if (int.TryParse(Console.ReadLine(), out int amount))
+                        productFound = true;
+                        Console.WriteLine($"Found product: {p.Name}\nStock amount: {p.Amount}");
+                        while (true)
                         {
-                            p.Amount = amount;
-                            Console.WriteLine($"Product {p.Name} new stock amount is {p.Amount}.");
-                            DeleteComment(p.Id);
-                            break;
-                        }
+                            Console.Write("Input new amount: ");
+                            if (int.TryParse(Console.ReadLine(), out int amount))
+                            {
+                                p.Amount = amount;
+                                Console.WriteLine($"Product {p.Name} new stock amount is {p.Amount}.");
+                                DeleteComment(p.Id);
+                                break;
+                            }
 
-                        Console.WriteLine("Input wasn't number!");
-                    }                   
+                            Console.WriteLine("Input wasn't number!");
+                        }
+                    }
+                }
+
+                if (!productFound)
+                {
+                    Console.WriteLine("Product with inputted ID couldn't be found!");
                 }
             }
-
-            if (!productFound)
+            catch (Exception e)
             {
-                Console.WriteLine("Product with inputted ID couldn't be found!");
+                Console.WriteLine($"{e.Message} Check the data of file!");
             }
         }
 
